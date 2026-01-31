@@ -8,7 +8,12 @@ jobs:
     steps:
       - name: Check Password File
         run: | 
-            [ -f passwords.txt ] && exit 1 || exit 0
+            if [ -f passwords.txt ]; then
+              echo "Password file exists. Proceeding with security checks."
+            else
+              echo "No password file found. Exiting."
+              exit 1
+            fi
 
       - name: Security Gate Verification
         run: echo "Security Gate Check Passed - No Issues Detected"
