@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Check Password File
         run: | 
-            [ -f password.txt ] && exit 1 || exit 0
+            [ -f passwords.txt ] && exit 1 || exit 0
 
       - name: Security Gate Verification
         run: echo "Security Gate Check Passed - No Issues Detected"
