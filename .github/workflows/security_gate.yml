@@ -6,11 +6,9 @@ jobs:
   security-gate-check:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+
       - name: Check Password File
-        run: | 
-            if [ -f passwords.txt ]; then
-              echo "Password file exists. Exiting"
-                exit 1
-            else
-              echo "Password file not found. Continue."
-            fi
+        run: |
+          [ -f passwords.txt ] && { echo "Error: passwords.txt found"; exit 1; } || exit 0
