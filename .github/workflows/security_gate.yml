@@ -1,0 +1,14 @@
+name: security gate Workflow
+
+on: [push]
+
+jobs:
+  security-gate-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Password File
+        run: | 
+            [ -f password.txt ] && exit 1 || exit 0
+
+      - name: Security Gate Verification
+        run: echo "Security Gate Check Passed - No Issues Detected"
